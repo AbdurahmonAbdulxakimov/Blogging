@@ -15,5 +15,6 @@ router.register("users", UserViewSet)
 app_name = "api"
 urlpatterns = [
     path('posts/', include("posts.urls")),
+    path('comments/', include("comments.urls")),
 ]
 urlpatterns += router.urls

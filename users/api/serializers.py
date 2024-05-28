@@ -6,6 +6,12 @@ from users.models import User as UserType
 User = get_user_model()
 
 
+class UserDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["id", "username", "name",]
+
+
 class UserSerializer(serializers.ModelSerializer[UserType]):
     class Meta:
         model = User

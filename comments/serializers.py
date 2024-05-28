@@ -16,12 +16,6 @@ class CommentSerializer(ModelSerializer):
         fields = ("id", "content", "user", "children", "created_at", "updated_at",)
 
     def get_children(self, obj: Comment) -> ReturnDict:
-        user = self.context["request"].user
-        if user and user.is_authenticated:
-            return CommentChildModelSerializer(
-                obj.children.filter(user=user),
-                many=True, context=self.context
-            ).data
         return CommentChildModelSerializer(obj.children.all(), many=True).data
 
 
